@@ -1,0 +1,24 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+
+  nav {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: right;
+  }
+
+  nav #auth-container {
+    display: inline-block;
+  }
+
+  nav button {
+    margin-left: 10px;
+  }
+
+  #results {
+    margin-top: 20px;
+    text-align: left;
+  }

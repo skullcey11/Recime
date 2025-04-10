@@ -1,0 +1,81 @@
+
+{% extends 'base.html' %}
+
+{% block title %}{{ recipe.name or 'Recipe Details' }} - Recime{% endblock %}
+
+{% block content %}
+
+    <!-- Flash Messages for System Notifications -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <p class="flash {{ category }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Recipe Detail Card Container -->
+    <div class="card">
+        <!-- Recipe Title -->
+        <h2>{{ recipe.name or 'Recipe Not Found' }}</h2>
+        
+        <!-- Recipe Image (if available) -->
+        {% if recipe.image_url %}
+            <img src="{{ recipe.image_url }}" alt="{{ recipe.name }}" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+        {% endif %}
+
+        <!-- Recipe Description Section -->
+        {% if recipe.description %}
+            <div>
+                <h3>Description</h3>
+                <p>{{ recipe.description }}</p>
+            </div>
+        {% endif %}
+
+        <!-- Recipe Ingredients Section -->
+        {% if recipe.ingredients %}
+            <div>
+                <h3>Ingredients</h3>
+                <ul>
+                    {% for ingredient in recipe.ingredients %}
+                        <li>{{ ingredient }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <!-- Recipe Instructions Section -->
+        {% if recipe.instructions %}
+            <div>
+                <h3>Instructions</h3>
+                <!-- Preserve line breaks in instructions -->
+                <p style="white-space: pre-wrap;">{{ recipe.instructions }}</p>
+            </div>
+        {% endif %}
+
+        <!-- Visual Separator -->
+        <hr>
+
+        <!-- Recipe Action Buttons (Save/Unsave) -->
+        <div style="margin-top: 20px; display: flex; gap: 10px; align-items: center;">
+            <!-- Conditional Display of Save/Unsave Button Based on Current State -->
+            {% if is_saved %}
+                <!-- Unsave Button (shown when recipe is already saved) -->
+                <form action="{{ url_for('unsave_recipe', recipe_id=recipe.id) }}" method="post">
+                    <button type="submit">Unsave Recipe</button> 
+                </form>
+            {% else %}
+                <!-- Save Button (shown when recipe is not saved) -->
+                <form action="{{ url_for('save_recipe', recipe_id=recipe.id) }}" method="post">
+                    <button type="submit">Save Recipe</button>
+                </form>
+            {% endif %}
+            
+            <!-- Navigation Back to Recipe List -->
+            <a href="{{ url_for('home') }}" role="button" class="secondary">Back to Recipes</a>
+        </div>
+    </div>
+
+{% endblock %} 

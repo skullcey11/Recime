@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Search Results - Recime{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Search Results</h1>
+    
+    <div class="search-summary">
+        <p>Showing recipes containing all of:
+            {% for ingredient in search_ingredients %}
+                <span class="badge">{{ ingredient }}</span>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+    </div>
+
+    {% if recipes %}
+        <div class="recipe-grid">
+            {% for recipe in recipes %}
+                {% include '_recipe_card.html' %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="no-results">
+            <p>No recipes found containing all of: 
+                {% for ingredient in search_ingredients %}
+                    <span class="badge">{{ ingredient }}</span>{% if not loop.last %}, {% endif %}
+                {% endfor %}.
+            Try searching with fewer or different ingredients!
+            </p>
+            <a href="{{ url_for('home') }}" class="button">Back to Search</a>
+        </div>
+    {% endif %}
+</div>
+
+{# Style block removed - styles are now in static/style.css #}
+{% endblock %} 

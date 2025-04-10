@@ -1,0 +1,741 @@
+:root {
+    /* Primary Colors */
+    --primary-color: #FF6500; 
+    --secondary-color: #1E3E62; 
+    --dark-color: #0B192C; 
+    --black: #000000; 
+    
+    /* Background Colors */
+    --light-orange: #FFE1CC; 
+    --light-blue: #E6EDF5; 
+    --white: #FFFFFF; 
+    
+    /* Text Colors */
+    --text-dark: #1F2937; 
+    --text-light: #F9FAFB; 
+    
+    /* Pico CSS Variable Overrides */
+    --pico-primary: var(--primary-color);
+    --pico-primary-hover: #E65A00; 
+    --pico-primary-focus: rgba(255, 101, 0, 0.25); 
+    --pico-primary-inverse: var(--white);
+    
+    --pico-secondary: var(--secondary-color);
+    --pico-secondary-hover: #173253; 
+    --pico-secondary-focus: rgba(30, 62, 98, 0.25); 
+    --pico-secondary-inverse: var(--white);
+    
+    /* Layout Colors */
+    --pico-contrast: var(--text-dark);
+    --pico-background-color: var(--white);
+    --pico-secondary-background: var(--light-blue);
+    --pico-card-background-color: var(--white);
+    --pico-card-border-color: #E1E1E1;
+    
+    /* Form Element Colors */
+    --pico-form-element-border-color: #E1E1E1;
+    --pico-form-element-active-border-color: var(--primary-color);
+    --pico-form-element-focus-color: var(--primary-color);
+}
+
+
+
+/* Main Content Container */
+main {
+    padding: var(--pico-block-spacing-vertical) var(--pico-block-spacing-horizontal);
+    background-color: var(--pico-background-color);
+    color: var(--text-dark); 
+    min-height: calc(100vh - 200px); 
+}
+
+/* Content Width Control */
+.container, main > article, .content-wrapper {
+    max-width: 960px; 
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem; 
+}
+
+/* Body and Footer Layout */
+body {
+    padding-bottom: 80px; 
+    background-color: var(--pico-secondary-background);
+    color: var(--text-dark);
+    line-height: 1.6; 
+    font-size: 16px; 
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--dark-color);
+    color: var(--text-light); 
+    padding: 1.5rem 0;
+    text-align: center;
+    width: 100%;
+    margin-top: 2rem;
+    position: relative; 
+}
+
+
+
+/* Header Background */
+header {
+    background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
+    padding: 1rem 0; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}
+
+/* Navigation Container */
+header nav {
+    max-width: 960px;
+    margin: auto;
+    padding: 0 var(--pico-block-spacing-horizontal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; 
+}
+
+/* Site Title/Logo */
+header h1 {
+    margin: 0;
+    padding: 0;
+}
+
+header h1 a {
+    color: var(--white); 
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.8rem; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3); 
+}
+
+/* Site Title Hover Effect */
+header h1 a:hover {
+    color: var(--primary-color);
+}
+
+/* Navigation Menu */
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap; 
+}
+
+/* Navigation Links */
+header nav ul li a {
+   color: var(--white); 
+   text-decoration: none;
+   padding: 0.5rem 0.75rem;
+   border-bottom: 2px solid transparent;
+   transition: all 0.3s ease;
+   border-radius: 4px;
+   font-weight: 500; 
+}
+
+/* Navigation Link Hover/Focus States */
+header nav ul li a:hover,
+header nav ul li a:focus {
+    background-color: rgba(255, 255, 255, 0.15); 
+    border-bottom-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    margin: 2rem 0 3rem;
+    padding: 2rem;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Welcome Text */
+.welcome-text {
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    font-size: 2.4rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    border-bottom: none;
+}
+
+/* User Name */
+.user-name {
+    color: var(--white);
+    font-weight: 700;
+}
+
+/* Welcome Tagline */
+.welcome-tagline {
+    color: var(--white);
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+/* Explore Heading */
+.explore-heading {
+    color: var(--white);
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    border-radius: 8px;
+    display: inline-block;
+    width: auto;
+    min-width: 250px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+
+
+/* Profile Card Container */
+.card {
+    background-color: var(--secondary-color);
+    padding: 2.5rem;
+    border-radius: 8px;
+    margin: 2rem auto;
+    max-width: 700px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: none;
+}
+
+/* Profile Heading */
+.card h2 {
+    color: var(--white);
+    text-align: center;
+    border-bottom: 2px solid var(--white);
+    padding-bottom: 0.75rem;
+    margin-bottom: 2rem;
+    display: block;
+    font-size: 2rem;
+}
+
+/* Profile Text Content */
+.card p {
+    color: var(--white);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* Profile Strong Text */
+.card strong {
+    color: var(--white);
+    font-weight: 700;
+}
+
+/* Profile Actions */
+.card [role="button"].secondary {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    border-color: var(--white) !important;
+    color: var(--white) !important;
+    margin-top: 1.5rem;
+    padding: 0.7rem 1.5rem;
+    font-weight: 600;
+}
+
+.card [role="button"].secondary:hover {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Create Recipe Form Container */
+form[method="post"] {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Create Recipe Form Labels */
+form[method="post"] label {
+    color: var(--white);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Create Recipe Form Title */
+form[method="post"] + h2,
+h2 + form[method="post"],
+h2:has(+ form[method="post"]) {
+    color: var(--white);
+    border-bottom-color: var(--white);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Help Text */
+form[method="post"] small {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+
+
+/* Primary Button Base Style */
+button, 
+[role="button"],
+input[type="submit"],
+input[type="button"] {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: var(--white) !important; 
+    transition: all 0.3s ease;
+    font-weight: 600; 
+    padding: 0.6rem 1.2rem; 
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2); 
+}
+
+/* Primary Button Hover State */
+button:hover, 
+[role="button"]:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background-color: var(--pico-primary-hover) !important;
+    border-color: var(--pico-primary-hover) !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+/* Secondary Button Base Style */
+button.secondary, 
+[role="button"].secondary,
+input[type="submit"].secondary,
+input[type="button"].secondary {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+}
+
+/* Secondary Button Hover State */
+button.secondary:hover, 
+[role="button"].secondary:hover,
+input[type="submit"].secondary:hover,
+input[type="button"].secondary:hover {
+    background-color: var(--pico-secondary-hover) !important;
+    border-color: var(--pico-secondary-hover) !important;
+}
+
+
+
+/* Form Labels */
+form label {
+    font-weight: 600; /* Bolder for better readability */
+    margin-bottom: 0.25rem;
+    color: var(--text-dark);
+    font-size: 1rem; /* Ensure readable font size */
+}
+
+/* Form Inputs */
+form input, form select, form textarea {
+    border: 1px solid var(--pico-form-element-border-color);
+    border-radius: 4px;
+    color: var(--text-dark);
+    background-color: var(--white);
+    padding: 0.7rem 1rem; /* More comfortable input padding */
+    font-size: 1rem; /* Ensure readable font size */
+}
+
+/* Form Input Focus State */
+form input:focus, form select:focus, form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--pico-primary-focus);
+}
+
+/* Textarea Specific Styles */
+form textarea {
+    resize: vertical;
+    min-height: 100px; /* Ensure reasonable minimum height */
+}
+
+/* Form Button Spacing */
+form button[type="submit"],
+form a[role="button"] {
+    margin-top: 1.5rem; /* More spacing before buttons */
+}
+
+
+
+/* Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    line-height: 1.3; /* Improved line height for headings */
+}
+
+/* H1 Specific Style */
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+}
+
+/* H2 Specific Style */
+h2 {
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+/* Link Styles */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500; /* Medium weight for better visibility */
+}
+
+/* Link Hover State */
+a:hover {
+    color: var(--pico-primary-hover);
+    text-decoration: underline; /* Underline on hover for better UX */
+}
+
+/* Footer Links */
+footer a {
+    color: var(--primary-color);
+}
+
+/* Footer Link Hover State */
+footer a:hover {
+    color: var(--white);
+}
+
+/* Paragraph Text */
+p {
+    color: var(--text-dark);
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+
+
+/* Flash Messages Container */
+.flash-messages {
+    margin: 1rem 0;
+    width: 100%;
+}
+
+/* Base Flash Message Style */
+.flash {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    border-left: 4px solid #ccc;
+    background-color: #f8f9fa;
+    color: var(--text-dark);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Success Flash Message */
+.flash.success {
+    background-color: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+}
+
+/* Error Flash Message */
+.flash.error {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+}
+
+
+
+/* Login Container */
+.login-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.login-container h2 {
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    color: var(--white);
+    display: block; /* Override the inline-block from general h2 style */
+}
+
+.login-container form > div {
+    margin-bottom: 1.5rem;
+}
+
+.login-container .button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.login-container p {
+    text-align: center;
+    color: var(--white);
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+}
+
+/* Login Form Elements */
+.login-container label {
+    color: var(--white);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,0.1);
+    color: var(--white);
+    margin-top: 0.25rem;
+}
+
+.login-container input:focus {
+    border-color: var(--primary-color);
+    background-color: rgba(255,255,255,0.15);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 101, 0, 0.25);
+}
+
+.login-container input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+
+
+/* Recipe List Container */
+.recipe-list {
+    margin: 2rem 0;
+}
+
+/* Recipe List Items */
+.recipe-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Individual Recipe Item */
+.recipe-list li {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: var(--white);
+    border-radius: 6px;
+    border: 1px solid #e1e1e1;
+    transition: all 0.3s ease;
+}
+
+/* Individual Recipe Item Hover */
+.recipe-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Recipe Item Link */
+.recipe-list li a {
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* Recipe List Empty State */
+.recipe-list p {
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--light-blue);
+    border-radius: 6px;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+}
+
+/* Recipe Grid Layout */
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+/* Recipe Card */
+.recipe-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+/* Recipe Card Image */
+.recipe-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Recipe Card Content */
+.recipe-card .content {
+    padding: 1.2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Recipe Card Title */
+.recipe-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+    border-bottom: none;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* Recipe Card Description */
+.recipe-description {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* Recipe Card Meta Information */
+.recipe-meta {
+    margin-top: auto;
+    font-size: 0.85rem;
+    color: #6c757d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* Recipe Card Button */
+.recipe-card a.button,
+.recipe-card button {
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+/* No Results Message */
+.no-results {
+    background-color: var(--light-blue);
+    padding: 2.5rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 2rem 0;
+    border: 1px solid #e1e4e8;
+}
+
+.no-results h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.no-results p {
+    font-size: 1.1rem;
+    color: #505a66;
+}
+
+
+.saved-recipes-heading {
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background-color: rgba(255, 101, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: rgba(255, 101, 0, 0.2);
+    text-decoration: none;
+}
+
+
+
+/* Small screens (mobile) */
+@media (max-width: 576px) {
+    header nav {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    header nav ul {
+        margin-top: 1rem;
+        justify-content: center;
+    }
+    
+    .recipe-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .login-container .button-group {
+        flex-direction: column;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .recipe-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+} 

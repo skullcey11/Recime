@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Your Saved Recipes - Recime{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Page Title -->
+    <h2 class="saved-recipes-heading">Your Saved Recipes</h2>
+    
+    <!-- Display flashed messages if any -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="flash {{ category }}">{{ message }}</div>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <!-- Saved Recipes Content -->
+    {% if recipes %}
+        <div class="recipe-grid">
+            {% for recipe in recipes %}
+                {% include '_recipe_card.html' %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="no-results">
+            <h3>No Saved Recipes Yet</h3>
+            <p>You haven't saved any recipes yet. Browse recipes and click "Save Recipe" to add them to your collection.</p>
+        </div>
+    {% endif %}
+    
+    <!-- Navigation Back to Home -->
+    <a href="{{ url_for('home') }}" class="back-link">Back to Home</a>
+</div>
+{% endblock %} 

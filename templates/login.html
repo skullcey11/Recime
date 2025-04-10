@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Login / Sign Up - Recime{% endblock %}
+
+{% block content %}
+    <!-- Authentication Container -->
+    <div class="login-container">
+        <h2>Login or Sign Up</h2>
+        
+        <!-- Flash Messages for Authentication Errors -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <!-- Authentication Form - Handles Both Login and Registration -->
+        <form method="post" action="{{ url_for('login') }}">
+            <!-- Email Field -->
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required>
+            </div>
+            
+            <!-- Password Field -->
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <!-- Action Button Group -->
+            <div class="button-group">
+                <!-- Login Button -->
+                <button type="submit" name="action" value="login">Login</button>
+                
+                <!-- Register Button -->
+                <button type="submit" name="action" value="signup">Sign Up</button>
+            </div>
+        </form>
+        
+        <!-- Authentication Instructions -->
+        <div style="margin-top: 20px;">
+            <p>Use your existing email and password to log in, or enter new credentials to create an account.</p>
+        </div>
+    </div>
+{% endblock %} 

@@ -1,0 +1,62 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags for proper mobile rendering -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Dynamic page title - each page can override this block -->
+    <title>{% block title %}Recime{% endblock %}</title>
+    
+    <!-- CSS Stylesheets -->
+    <!-- Pico CSS - A minimal CSS framework for clean styling -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@latest/css/pico.min.css"/>
+    <!-- Custom application styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <!-- Additional head elements can be added here -->
+</head>
+<body>
+    <!-- Header with Main Navigation -->
+    <header>
+        <nav>
+            <!-- App Logo/Title with link to home page -->
+            <h1><a href="{{ url_for('home') }}">Recime</a></h1>
+            
+            <!-- Main Navigation Menu -->
+            <ul>
+                <!-- Home link always visible -->
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                
+                <!-- Conditional navigation based on user login status -->
+                {% if 'user' in session %}
+                    <!-- Links only visible to logged-in users -->
+                    <li><a href="{{ url_for('create_recipe') }}">Create Recipe</a></li>
+                    <li><a href="{{ url_for('saved_recipes') }}">Saved Recipes</a></li>
+                    <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout ({{ session.user.email or session.user.id }})</a></li>
+                {% else %}
+                    <!-- Links for guests/non-logged-in users -->
+                    <li><a href="{{ url_for('login') }}">Login / Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- This block is replaced by content from child templates -->
+        {% block content %}
+        <!-- Page-specific content will go here -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer with Copyright Information -->
+    <footer>
+        <p>&copy; 2024 Recime App</p>
+    </footer>
+
+    <!-- Any JavaScript would go here (at the end of the body for performance) -->
+</body>
+</html> 

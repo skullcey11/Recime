@@ -1,0 +1,111 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Home - Recime{% endblock %}
+
+{% block content %}
+<div class="container">
+    {# Personalized Welcome Message #}
+    <div class="hero">
+        <h1 class="welcome-text">Welcome, MasterChef!</h1>
+        <p class="welcome-tagline">Find your next favorite recipe here!</p>
+    </div>
+
+    {# Display flashed messages if any #}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category or 'info' }}" role="alert">{{ message }}</div>
+            {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {# Recipe Search Form - Copied from previous multi-ingredient setup #}
+    <form action="{{ url_for('search') }}" method="get" class="search-form">
+        <div id="ingredients-container">
+            <div class="ingredient-input">
+                <input type="text" name="ingredients[]" placeholder="Enter an ingredient..." required>
+                <button type="button" class="remove-ingredient secondary outline" style="display: none;" aria-label="Remove ingredient">×</button> 
+            </div>
+        </div>
+        <div class="form-actions">
+            <button type="button" id="add-ingredient" class="secondary">Add Another Ingredient</button>
+            <button type="submit" class="primary">Search Recipes</button>
+        </div>
+    </form>
+    
+    {# Visual Separator #}
+    <hr style="margin: 3rem 0;">
+
+    {# Recipe List Section - Using Grid and Cards #}
+    <h2 class="explore-heading" style="text-align: center; border-bottom: none; margin-bottom: 2rem;">Explore All Recipes</h2>
+    
+    {% if recipes %}
+        <div class="recipe-grid"> {# Use the same grid class #}
+            {% for recipe in recipes %}
+                 {# Include the reusable recipe card template #}
+                {% include '_recipe_card.html' %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="no-results" style="max-width: none; background: transparent;"> {# Simplified no-results message for home #}
+             <p>No recipes found in the database yet.</p>
+        </div>
+    {% endif %}
+</div> {# End of .container #}
+
+{# JavaScript for dynamic ingredient inputs - Copied from previous multi-ingredient setup #}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('ingredients-container');
+    const addButton = document.getElementById('add-ingredient');
+
+    function createIngredientInput() {
+        const div = document.createElement('div');
+        div.className = 'ingredient-input';
+        
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'ingredients[]';
+        input.placeholder = 'Enter an ingredient...';
+        input.required = true;
+        
+        const removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.className = 'remove-ingredient secondary outline';
+        removeButton.textContent = '×';
+        removeButton.setAttribute('aria-label', 'Remove ingredient');
+        removeButton.onclick = function() {
+            div.remove();
+            updateRemoveButtonsVisibility();
+        };
+        
+        div.appendChild(input);
+        div.appendChild(removeButton);
+        return div;
+    }
+
+    function updateRemoveButtonsVisibility() {
+        const inputs = container.getElementsByClassName('ingredient-input');
+        const showRemove = inputs.length > 1;
+        for (let i = 0; i < inputs.length; i++) {
+            const removeButton = inputs[i].querySelector('.remove-ingredient');
+            if (removeButton) {
+                removeButton.style.display = showRemove ? 'inline-block' : 'none';
+            }
+        }
+    }
+
+    addButton.onclick = function() {
+        container.appendChild(createIngredientInput());
+        updateRemoveButtonsVisibility();
+    };
+
+    updateRemoveButtonsVisibility();
+});
+</script>
+
+{# Removed inline <style> block - styles should be in static/style.css #}
+{% endblock %}

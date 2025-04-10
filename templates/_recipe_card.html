@@ -1,0 +1,22 @@
+<article class="recipe-card">
+    {# Recipe image at the top #}
+    <img 
+        src="{{ recipe.get('strMealThumb') or recipe.get('image_url') or url_for('static', filename='images/placeholder.png') }}" 
+        alt="Image of {{ recipe.get('name', 'Recipe') }}" 
+        class="recipe-card-image"
+        loading="lazy"> {# Add lazy loading for performance #}
+        
+    <div class="recipe-card-content">
+        {# Recipe Title #}
+        <h2>{{ recipe.get('name', 'Untitled Recipe') }}</h2>
+        
+        {# Optional: Meta Info (Uncomment if desired) #}
+        {# <div class="recipe-meta">
+            <span class="cooking-time">🕒 {{ recipe.get('cooking_time', 'N/A') }} mins</span>
+            <span class="difficulty">📊 {{ recipe.get('difficulty', 'N/A') }}</span>
+        </div> #}
+        
+        {# View Recipe Button #}
+        <a href="{{ url_for('view_recipe', recipe_id=recipe.get('id')) }}" role="button" class="recipe-card-button">View Recipe</a>
+    </div>
+</article> 

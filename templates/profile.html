@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Your Profile - Recime{% endblock %}
+
+{% block content %}
+    <!-- Profile Information Container -->
+    <div class="card">
+        <!-- Page Title -->
+        <h2>Your Profile</h2>
+        
+        <!-- User Information Display -->
+        <p><strong>Email:</strong> {{ session.user.email }}</p>
+        
+        <!-- Account Status Information -->
+        <p>You are currently logged in.</p>
+        
+        <!-- Profile Actions -->
+        <div style="margin-top: 20px;">
+            <a href="{{ url_for('home') }}" role="button" class="secondary">Back to Home</a>
+        </div>
+    </div>
+{% endblock %} 
